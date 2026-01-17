@@ -70,6 +70,7 @@ header{
   font-size:.85rem;
 }
 
+/* RIGHT HEADER CONTACTS */
 .header-contact{
   display:flex;
   gap:16px;
@@ -123,12 +124,6 @@ header{
 .form-box h3{
   text-align:center;
   color:var(--blue);
-}
-
-.form-note{
-  text-align:center;
-  font-size:.85rem;
-  margin-bottom:18px;
 }
 
 .form-box input,
@@ -221,7 +216,9 @@ footer h4{
 
 /* ================= MOBILE ================= */
 @media(max-width:900px){
-  header{padding:16px 5%;}
+  header{
+    padding:16px 5%;
+  }
 
   .header-wrap{
     flex-direction:column;
@@ -270,10 +267,76 @@ footer h4{
     <p>Independent guidance for plots, flats & land across Sonepat.</p>
   </div>
 
+  <!-- FORM (UNCHANGED VISUALLY) -->
   <form class="form-box">
     <h3>Connect With Us</h3>
 
     <select id="propertyType" required>
       <option value="">Property Type</option>
       <option>Plot</option>
-      <option>Flat</
+      <option>Flat</option>
+      <option>Agricultural</option>
+    </select>
+
+    <input id="location" placeholder="Location">
+    <input id="budget" placeholder="Budget">
+    <input id="name" placeholder="Your Name" required>
+    <input id="phone" placeholder="Phone" required>
+
+    <button type="button" onclick="openPrefilledForm()">Submit</button>
+  </form>
+</section>
+
+<section class="map-section">
+  <h2>Explore Sonepat</h2>
+  <div class="map-box">
+    <iframe src="https://www.google.com/maps?q=Kundli,+Sonipat&output=embed"
+      width="100%" height="100%" style="border:0;"></iframe>
+  </div>
+</section>
+
+<div class="floating-buttons">
+  <a href="tel:9050501099">📞 Call</a>
+  <a href="https://wa.me/919050501099">💬 WhatsApp</a>
+</div>
+
+<footer>
+  <h4>Areas We Serve</h4>
+  <p>
+    Sonipat (Kundli, Murthal, Rai, UER-2 & surrounding sectors)<br>
+    <strong>Agricultural land across Haryana</strong>
+  </p>
+
+  <div class="footer-links">
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-and-conditions.html">Terms & Conditions</a> |
+    <a href="/disclaimer.html">Disclaimer</a>
+  </div>
+
+  <div class="footer-note">
+    © 2026 Sonepat Prime Estates · Consultation tailored to individual requirements
+  </div>
+</footer>
+
+<script>
+function openPrefilledForm() {
+  const propertyType = document.getElementById('propertyType').value;
+  const location = document.getElementById('location').value;
+  const budget = document.getElementById('budget').value;
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+
+  const url =
+    'https://docs.google.com/forms/d/e/1FAIpQLSfcmvYUu40UK9ExFVi0i1_vxtXR7Asj7urI-CJHkzfbyN9Jfg/viewform?' +
+    'entry.1004920093=' + encodeURIComponent(propertyType) +
+    '&entry.1932303709=' + encodeURIComponent(location) +
+    '&entry.1604031610=' + encodeURIComponent(budget) +
+    '&entry.1129725770=' + encodeURIComponent(name) +
+    '&entry.1988695889=' + encodeURIComponent(phone);
+
+  window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
