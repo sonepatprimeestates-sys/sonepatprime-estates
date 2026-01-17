@@ -38,7 +38,7 @@ input,select,button{width:100%;}
 /* ================= HEADER ================= */
 header{
   background:var(--blue);
-  padding:18px 6%; /* FIXED: reduced side spacing */
+  padding:18px 6%;
 }
 
 .header-wrap{
@@ -51,11 +51,11 @@ header{
 .brand{
   display:flex;
   align-items:center;
-  gap:12px; /* FIXED: tighter logo spacing */
+  gap:12px;
 }
 
 .brand-logo{
-  height:80px; /* slightly balanced */
+  height:80px;
   width:auto;
 }
 
@@ -70,7 +70,6 @@ header{
   font-size:.85rem;
 }
 
-/* RIGHT HEADER CONTACTS */
 .header-contact{
   display:flex;
   gap:16px;
@@ -222,9 +221,7 @@ footer h4{
 
 /* ================= MOBILE ================= */
 @media(max-width:900px){
-  header{
-    padding:16px 5%;
-  }
+  header{padding:16px 5%;}
 
   .header-wrap{
     flex-direction:column;
@@ -260,10 +257,10 @@ footer h4{
     </div>
 
     <div class="header-contact">
-  <a href="tel:9050501099">📞 9050501099</a>
-  <a href="https://wa.me/919050501099" target="_blank">💬 9050501099</a>
-  <a href="mailto:sonepatprimeestates@gmail.com">✉ sonepatprimeestates@gmail.com</a>
-</div>
+      <a href="tel:9050501099">📞 9050501099</a>
+      <a href="https://wa.me/919050501099" target="_blank">💬 9050501099</a>
+      <a href="mailto:sonepatprimeestates@gmail.com">✉ sonepatprimeestates@gmail.com</a>
+    </div>
   </div>
 </header>
 
@@ -273,66 +270,10 @@ footer h4{
     <p>Independent guidance for plots, flats & land across Sonepat.</p>
   </div>
 
-  <form class="form-box" method="POST" data-netlify="true" name="Property Enquiry">
-    <input type="hidden" name="form-name" value="Property Enquiry">
+  <form class="form-box">
     <h3>Connect With Us</h3>
 
-    <select required>
+    <select id="propertyType" required>
       <option value="">Property Type</option>
       <option>Plot</option>
-      <option>Flat</option>
-      <option>Agricultural</option>
-    </select>
-
-    <input placeholder="Location">
-    <input placeholder="Budget">
-    <input placeholder="Your Name" required>
-    <input placeholder="Phone" required>
-
-    <button type="button"   onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfcmvYUu40UK9ExFVi0i1_vxtXR7Asj7urI-CJHkzfbyN9Jfg/viewform','_blank')">   Submit </button>
-  </form>
-</section>
-
-<section class="map-section">
-  <h2>Explore Sonepat</h2>
-  <div class="map-box">
-    <iframe src="https://www.google.com/maps?q=Kundli,+Sonipat&output=embed" width="100%" height="100%" style="border:0;"></iframe>
-  </div>
-</section>
-
-<div class="floating-buttons">
-  <a href="tel:9050501099">📞 Call</a>
-  <a href="https://wa.me/919050501099">💬 WhatsApp</a>
-</div>
-
-<footer>
-  <h4>Areas We Serve</h4>
-  <p>
-    Sonipat (Kundli, Murthal, Rai, UER-2 & surrounding sectors)<br>
-    <strong>Agricultural land across Haryana</strong>
-  </p>
-
-  <h4 style="margin-top:16px;">Work With Sonepat Prime Estates</h4>
-  <p>
-    Performance-based opportunity. Compensation on successful closures only.<br>
-    Email:
-    <a href="mailto:sonepatprimeestates@gmail.com" style="color:#D4AF37;">
-      sonepatprimeestates@gmail.com
-    </a><br>
-    <em>Calls or WhatsApp messages will not be entertained.</em>
-  </p>
-
-  <div class="footer-links">
-    <a href="/privacy-policy.html">Privacy Policy</a> |
-    <a href="/terms-and-conditions.html">Terms & Conditions</a> |
-    <a href="/disclaimer.html">Disclaimer</a>
-  </div>
-
-  <div class="footer-note">
-    © 2026 Sonepat Prime Estates · Consultation tailored to individual requirements
-  </div>
-</footer>
-
-</body>
-</html>
-
+      <option>Flat</
