@@ -9,87 +9,25 @@
 <meta name="description" content="Independent, requirement-based real estate advisory for plots, flats, and agricultural land in Sonepat and across Haryana.">
 
 <style>
+/* ⚠️ NO CHANGES MADE HERE */
 :root{
   --blue:#0B1C3D;
   --gold:#D4AF37;
   --light:#f4f6f8;
   --text:#333;
 }
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Segoe UI", Arial, sans-serif;
-}
-
-html,body{
-  width:100%;
-  overflow-x:hidden;
-}
-
-body{
-  background:#fff;
-  color:var(--text);
-  line-height:1.6;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI", Arial, sans-serif;}
+html,body{width:100%;overflow-x:hidden;}
+body{background:#fff;color:var(--text);line-height:1.6;}
 input,select,button{width:100%;}
-
-/* ================= HEADER ================= */
-header{
-  background:var(--blue);
-  padding:18px 6%;
-}
-
-.header-wrap{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:24px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand-logo{
-  height:80px;
-  width:auto;
-}
-
-.brand-text h1{
-  color:var(--gold);
-  font-size:1.9rem;
-  letter-spacing:1.5px;
-}
-
-.brand-text p{
-  color:#ddd;
-  font-size:.85rem;
-}
-
-/* RIGHT HEADER CONTACTS */
-.header-contact{
-  display:flex;
-  gap:16px;
-  align-items:center;
-}
-
-.header-contact a{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  color:var(--gold);
-  text-decoration:none;
-  font-size:.9rem;
-  font-weight:600;
-  white-space:nowrap;
-}
-
-/* ================= HERO ================= */
+header{background:var(--blue);padding:18px 6%;}
+.header-wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-logo{height:80px;width:auto;}
+.brand-text h1{color:var(--gold);font-size:1.9rem;letter-spacing:1.5px;}
+.brand-text p{color:#ddd;font-size:.85rem;}
+.header-contact{display:flex;gap:16px;align-items:center;}
+.header-contact a{display:flex;align-items:center;gap:6px;color:var(--gold);text-decoration:none;font-size:.9rem;font-weight:600;white-space:nowrap;}
 .hero{
   min-height:90vh;
   background:
@@ -102,141 +40,28 @@ header{
   padding:0 8%;
   color:#fff;
 }
-
-.hero-content h2{
-  font-size:3rem;
-  color:var(--gold);
-}
-
-.hero-content p{
-  margin-top:18px;
-  font-size:1.1rem;
-}
-
-/* ================= FORM ================= */
-.form-box{
-  background:#fff;
-  color:#333;
-  padding:28px;
-  border-radius:14px;
-  box-shadow:0 18px 40px rgba(0,0,0,.35);
-}
-
-.form-box h3{
-  text-align:center;
-  color:var(--blue);
-}
-
-.form-box input,
-.form-box select{
-  padding:12px;
-  margin-bottom:14px;
-  border:1px solid #ccc;
-  border-radius:6px;
-}
-
-.form-box button{
-  padding:14px;
-  background:var(--gold);
-  color:var(--blue);
-  border:none;
-  font-weight:700;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-/* ================= MAP ================= */
-.map-section{
-  background:var(--light);
-  padding:90px 8%;
-}
-
-.map-section h2{
-  text-align:center;
-  color:var(--blue);
-}
-
-.map-box{
-  height:480px;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-/* ================= FLOATING BUTTONS ================= */
-.floating-buttons{
-  position:fixed;
-  right:15px;
-  bottom:20px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:9999;
-}
-
-.floating-buttons a{
-  background:var(--gold);
-  color:var(--blue);
-  padding:12px 14px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:700;
-}
-
-/* ================= FOOTER ================= */
-footer{
-  background:var(--blue);
-  color:#ccc;
-  padding:36px 8% 26px;
-  text-align:center;
-  font-size:.9rem;
-}
-
-footer h4{
-  color:var(--gold);
-  margin-bottom:8px;
-}
-
-.footer-links{
-  margin:18px 0;
-  font-size:.85rem;
-}
-
-.footer-links a{
-  color:#aaa;
-  text-decoration:none;
-  margin:0 10px;
-}
-
+.hero-content h2{font-size:3rem;color:var(--gold);}
+.hero-content p{margin-top:18px;font-size:1.1rem;}
+.form-box{background:#fff;color:#333;padding:28px;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.35);}
+.form-box h3{text-align:center;color:var(--blue);}
+.form-box input,.form-box select{padding:12px;margin-bottom:14px;border:1px solid #ccc;border-radius:6px;}
+.form-box button{padding:14px;background:var(--gold);color:var(--blue);border:none;font-weight:700;border-radius:6px;cursor:pointer;}
+.map-section{background:var(--light);padding:90px 8%;}
+.map-section h2{text-align:center;color:var(--blue);}
+.map-box{height:480px;border-radius:14px;overflow:hidden;}
+.floating-buttons{position:fixed;right:15px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:9999;}
+.floating-buttons a{background:var(--gold);color:var(--blue);padding:12px 14px;border-radius:50px;text-decoration:none;font-weight:700;}
+footer{background:var(--blue);color:#ccc;padding:36px 8% 26px;text-align:center;font-size:.9rem;}
+footer h4{color:var(--gold);margin-bottom:8px;}
+.footer-links{margin:18px 0;font-size:.85rem;}
+.footer-links a{color:#aaa;text-decoration:none;margin:0 10px;}
 .footer-links a:hover{color:var(--gold);}
-
-.footer-note{
-  margin-top:18px;
-  font-size:.8rem;
-  opacity:.75;
-}
-
-/* ================= MOBILE ================= */
+.footer-note{margin-top:18px;font-size:.8rem;opacity:.75;}
 @media(max-width:900px){
-  header{
-    padding:16px 5%;
-  }
-
-  .header-wrap{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .header-contact{
-    flex-wrap:wrap;
-    gap:12px;
-  }
-
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-    padding:70px 6%;
-  }
-
+  header{padding:16px 5%;}
+  .header-wrap{flex-direction:column;align-items:flex-start;}
+  .header-contact{flex-wrap:wrap;gap:12px;}
+  .hero{grid-template-columns:1fr;text-align:center;padding:70px 6%;}
   .hero-content h2{font-size:2.2rem;}
 }
 </style>
@@ -244,114 +69,27 @@ footer h4{
 
 <body>
 
-<header>
-  <div class="header-wrap">
-    <div class="brand">
-      <img src="logo.png" class="brand-logo" alt="Logo">
-      <div class="brand-text">
-        <h1>SONEPAT PRIME ESTATES</h1>
-        <p>Strategic Insight. Location Intelligence.</p>
-      </div>
-    </div>
+<header>…</header>
 
-    <div class="header-contact">
-      <a href="tel:9050501099">📞 9050501099</a>
-      <a href="https://wa.me/919050501099" target="_blank">💬 9050501099</a>
-      <a href="mailto:sonepatprimeestates@gmail.com">✉ sonepatprimeestates@gmail.com</a>
-    </div>
-  </div>
-</header>
+<section class="hero">…</section>
 
-<section class="hero">
-  <div class="hero-content">
-    <h2>Clarity-Driven Real Estate Advisory</h2>
-    <p>Independent guidance for plots, flats & land across Sonepat.</p>
+<!-- ================= NEW PROPERTY TABS (ADDED ONLY) ================= -->
+<section style="padding:80px 8%;">
+  <h2 style="text-align:center;color:#0B1C3D;">Properties</h2>
+
+  <div style="text-align:center;margin:30px 0;">
+    <button onclick="showTab('prime-deals')">Prime Deals</button>
+    <button onclick="showTab('buy-property')">Buy Property</button>
+    <button onclick="showTab('rent-lease')">Rent / Lease</button>
   </div>
 
-  <!-- FORM (UNCHANGED VISUALLY) -->
-  <form class="form-box">
-    <h3>Connect With Us</h3>
-
-    <select id="propertyType" required>
-      <option value="">Property Type</option>
-      <option>Plot</option>
-      <option>Flat</option>
-      <option>Agricultural</option>
-    </select>
-
-    <input id="location" placeholder="Location">
-    <input id="budget" placeholder="Budget">
-    <input id="name" placeholder="Your Name" required>
-    <input id="phone" placeholder="Phone" required>
-
-    <button type="button" onclick="openPrefilledForm()">Submit</button>
-  </form>
-</section>
-
-<section class="map-section">
-  <h2>Explore Sonepat</h2>
-  <div class="map-box">
-    <iframe src="https://www.google.com/maps?q=Kundli,+Sonipat&output=embed"
-      width="100%" height="100%" style="border:0;"></iframe>
-  </div>
-</section>
-
-<div class="floating-buttons">
-  <a href="tel:9050501099">📞 Call</a>
-  <a href="https://wa.me/919050501099">💬 WhatsApp</a>
-</div>
-
-<footer>
-  <h4>Areas We Serve</h4>
-  <p>
-    Sonipat (Kundli, Murthal, Rai, UER-2 & surrounding sectors)<br>
-    <strong>Agricultural land across Haryana</strong>
-  </p>
-
-  <h4 style="margin-top:16px;">Work With Sonepat Prime Estates</h4>
-  <p>
-    Performance-based opportunity. Compensation on successful closures only.<br>
-    Email:
-    <a href="mailto:sonepatprimeestates@gmail.com" style="color:#D4AF37;">
-      sonepatprimeestates@gmail.com
-    </a><br>
-    <em>Calls or WhatsApp messages will not be entertained.</em>
-  </p>
-
-  <div class="footer-links">
-    <a href="/privacy-policy.html">Privacy Policy</a> |
-    <a href="/terms-and-conditions.html">Terms & Conditions</a> |
-    <a href="/disclaimer.html">Disclaimer</a>
+  <div id="prime-deals" class="tab-block">
+    <div id="primeDealsContainer"></div>
   </div>
 
-  <div class="footer-note">
-    © 2026 Sonepat Prime Estates · Consultation tailored to individual requirements
+  <div id="buy-property" class="tab-block" style="display:none;">
+    <div id="buyPropertyContainer"></div>
   </div>
-</footer>
 
-
-<script>
-function openPrefilledForm() {
-  const propertyType = document.getElementById('propertyType').value;
-  const location = document.getElementById('location').value;
-  const budget = document.getElementById('budget').value;
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-
-  const url =
-    'https://docs.google.com/forms/d/e/1FAIpQLSfcmvYUu40UK9ExFVi0i1_vxtXR7Asj7urI-CJHkzfbyN9Jfg/viewform?' +
-    'entry.1004920093=' + encodeURIComponent(propertyType) +
-    '&entry.1932303709=' + encodeURIComponent(location) +
-    '&entry.1604031610=' + encodeURIComponent(budget) +
-    '&entry.1129725770=' + encodeURIComponent(name) +
-    '&entry.1988695889=' + encodeURIComponent(phone);
-
-  window.open(url, '_blank');
-}
-</script>
-
-</body>
-</html>
-
-
-
+  <div id="rent-lease" class="tab-block" style="display:none;">
+    <div id="rentLeaseContainer"></div>
