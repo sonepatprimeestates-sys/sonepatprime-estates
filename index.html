@@ -381,13 +381,24 @@ footer h4{
 
 <script>
 function showTab(id, btn){
-  document.querySelectorAll('.listings-section > div')
-    .forEach(d => d.classList.remove('active'));
+  // hide all
+  document.querySelectorAll('.listings-section > div').forEach(d => {
+    d.classList.remove('active');
+    d.style.display = 'none';   // 🔑 FORCE RESET
+  });
 
-  document.querySelectorAll('.tab-btn')
-    .forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-  document.getElementById(id).classList.add('active');
+  // show selected
+  const target = document.getElementById(id);
+  target.classList.add('active');
+  target.style.display = 'block'; // 🔑 FORCE SHOW
+
   btn.classList.add('active');
+
+  // optional: bring user to data area smoothly
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>
+
+
