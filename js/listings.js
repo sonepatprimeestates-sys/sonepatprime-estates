@@ -8,13 +8,21 @@ const PHONE_NUMBER = "9050501099"; // your number
 
 // CSV → JSON
 function csvToJson(csv) {
-  const lines = csv.trim().split("\n");
-  const headers = lines[0].split(",").map(h => h.trim());
+  const rows = csv
+    .trim()
+    .split("\n")
+    .map(row =>
+      row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)
+        ?.map(cell => cell.replace(/^"|"$/g, "").trim())
+    );
 
-  return lines.slice(1).map(line => {
-    const values = line.split(",");
+  const headers = rows[0];
+
+  return rows.slice(1).map(row => {
     let obj = {};
-    headers.forEach((h, i) => (obj[h] = values[i]?.trim()));
+    headers.forEach((h, i) => {
+      obj[h] = row[i];
+    });
     return obj;
   });
 }
