@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="6WcsJHXd4jXND_v_LLAY39iaaFsSanQKH3Srgs0s9tg" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sonepat Prime Estates | Real Estate Advisory</title>
@@ -36,7 +35,7 @@ body{
 
 input,select,button{width:100%;}
 
-/* HEADER */
+/* ================= HEADER ================= */
 header{
   background:var(--blue);
   padding:18px 6%;
@@ -72,7 +71,8 @@ header{
 
 .header-contact{
   display:flex;
-  gap:16px;
+  gap:18px;
+  align-items:center;
 }
 
 .header-contact a{
@@ -80,230 +80,36 @@ header{
   text-decoration:none;
   font-size:.9rem;
   font-weight:600;
+  white-space:nowrap;
 }
 
-/* HERO */
-.hero{
-  min-height:90vh;
-  background:
-    linear-gradient(rgba(11,28,61,.88),rgba(11,28,61,.88)),
-    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c") center/cover no-repeat;
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:60px;
-  align-items:center;
-  padding:0 8%;
-  color:#fff;
-}
-
-.hero-content h2{
-  font-size:3rem;
-  color:var(--gold);
-}
-
-.hero-content p{
-  margin-top:18px;
-  font-size:1.1rem;
-}
-
-/* FORM */
-.form-box{
-  background:#fff;
-  color:#333;
-  padding:28px;
-  border-radius:14px;
-  box-shadow:0 18px 40px rgba(0,0,0,.35);
-}
-
-.form-box h3{
-  text-align:center;
-  color:var(--blue);
-}
-
-.form-box input,
-.form-box select{
-  padding:12px;
-  margin-bottom:14px;
-  border:1px solid #ccc;
-  border-radius:6px;
-}
-
-.form-box button{
-  padding:14px;
-  background:var(--gold);
-  color:var(--blue);
-  border:none;
-  font-weight:700;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-/* PROPERTIES */
-.property-section{
-  padding:80px 8%;
-}
-
-.property-section h2{
-  text-align:center;
-  color:var(--blue);
-}
-
+/* ================= PROPERTY TABS ================= */
 .property-tabs{
-  text-align:center;
-  margin:30px 0;
+  background:var(--light);
+  padding:22px 6%;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
 }
 
 .property-tabs button{
-  margin:0 6px;
-  padding:10px 18px;
+  background:var(--blue);
+  color:#fff;
+  border:none;
+  padding:14px 26px;
+  border-radius:30px;
+  font-size:.95rem;
+  font-weight:700;
   cursor:pointer;
 }
 
-.property-list{
-  margin-top:30px;
-}
-
-/* MAP */
-.map-section{
-  background:var(--light);
-  padding:90px 8%;
-}
-
-.map-section h2{
-  text-align:center;
-  color:var(--blue);
-}
-
-.map-box{
-  height:480px;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-/* FLOATING */
-.floating-buttons{
-  position:fixed;
-  right:15px;
-  bottom:20px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.floating-buttons a{
+.property-tabs button.active{
   background:var(--gold);
   color:var(--blue);
-  padding:12px 14px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:700;
 }
 
-/* FOOTER */
-footer{
-  background:var(--blue);
-  color:#ccc;
-  padding:36px 8% 26px;
-  text-align:center;
-}
-
-footer h4{color:var(--gold);}
-
-.footer-links a{
-  color:#aaa;
-  margin:0 10px;
-  text-decoration:none;
-}
-
-.footer-links a:hover{color:var(--gold);}
-
-/* MOBILE */
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-    padding:70px 6%;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="header-wrap">
-    <div class="brand">
-      <img src="logo.png" class="brand-logo" alt="Logo">
-      <div class="brand-text">
-        <h1>SONEPAT PRIME ESTATES</h1>
-        <p>Strategic Insight. Location Intelligence.</p>
-      </div>
-    </div>
-    <div class="header-contact">
-      <a href="tel:9050501099">📞 9050501099</a>
-      <a href="https://wa.me/919050501099">💬 9050501099</a>
-    </div>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <h2>Clarity-Driven Real Estate Advisory</h2>
-    <p>Independent guidance for plots, flats & land across Sonepat.</p>
-  </div>
-
-  <form class="form-box">
-    <h3>Connect With Us</h3>
-    <select id="propertyType" required>
-      <option value="">Property Type</option>
-      <option>Plot</option>
-      <option>Flat</option>
-      <option>Agricultural</option>
-    </select>
-    <input id="location" placeholder="Location">
-    <input id="budget" placeholder="Budget">
-    <input id="name" placeholder="Your Name" required>
-    <input id="phone" placeholder="Phone" required>
-    <button type="button" onclick="openPrefilledForm()">Submit</button>
-  </form>
-</section>
-
-<section class="property-section">
-  <h2>Properties</h2>
-  <div class="property-tabs">
-    <button onclick="showTab('prime')">Prime Deals</button>
-    <button onclick="showTab('buy')">Buy Property</button>
-    <button onclick="showTab('rent')">Rent / Lease</button>
-  </div>
-
-  <div id="prime" class="property-list">
-    <div id="primeDealsContainer"></div>
-  </div>
-
-  <div id="buy" class="property-list" style="display:none;">
-    <div id="buyPropertyContainer"></div>
-  </div>
-
-  <div id="rent" class="property-list" style="display:none;">
-    <div id="rentLeaseContainer"></div>
-  </div>
-</section>
-
-<section class="map-section">
-  <h2>Explore Sonepat</h2>
-  <div class="map-box">
-    <iframe src="https://www.google.com/maps?q=Kundli,+Sonipat&output=embed"
-      width="100%" height="100%" style="border:0;"></iframe>
-  </div>
-</section>
-
-<div class="floating-buttons">
-  <a href="tel:9050501099">📞 Call</a>
-  <a href="https://wa.me/919050501099">💬 WhatsApp</a>
-</div>
-
-<footer>
-  <h4>Areas We Serve</h4>
-  <p>Sonipat · Agricultural land across Haryana</p>
-  <div class="footer-links">
-    <a href="/privacy-policy.html">Privacy Policy</a> |
+/* ================= HERO ================= */
+.hero{
+  min-height:90vh;
+  background:
