@@ -27,7 +27,7 @@ function renderCards(data, containerId, showRent = false) {
   container.innerHTML = "";
 
   data
-    .filter(item => item.status === "Available") // ✅ WEBSITE RULE
+    .filter(item => item.property_status === "Available")// ✅ WEBSITE RULE
     .forEach(item => {
       container.innerHTML += `
         <div class="property-card">
