@@ -1,5 +1,8 @@
-const BASE_SHEET_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3K7yILWEa3HU9Bb9xwGkKU_1LFlpg7wztm4lEAYYyMyZNj2_-gtpK3kOJebDjKgS54NaGtgeyRNN5/pub?output=csv";
+const SHEET_ID = "1uvSZpQBcUXyQbjaMK7UsWOBJkiRvwAVIt8YIYCmXTTA";
+
+function getSheetUrl(gid) {
+  return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}&v=${Date.now()}`;
+}
 
 const PHONE_NUMBER = "9050501099"; // your number
 
@@ -45,16 +48,16 @@ function renderCards(data, containerId, showRent = false) {
 }
 
 // Prime Deals
-fetch(`${BASE_SHEET_URL}&gid=0`)
+fetch(getSheetUrl(0))
   .then(res => res.text())
   .then(csv => renderCards(csvToJson(csv), "primeDealsContainer"));
 
 // Buy Property
-fetch(`${BASE_SHEET_URL}&gid=426802063`)
+fetch(getSheetUrl(426802063))
   .then(res => res.text())
   .then(csv => renderCards(csvToJson(csv), "buyPropertyContainer"));
 
 // Rent / Lease
-fetch(`${BASE_SHEET_URL}&gid=402021334`)
+fetch(getSheetUrl(402021334))
   .then(res => res.text())
   .then(csv => renderCards(csvToJson(csv), "rentLeaseContainer", true));
