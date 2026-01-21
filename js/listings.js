@@ -78,24 +78,39 @@ function renderCards(data, containerId, showRent = false) {
 /* ================================
    FETCH DATA AFTER DOM LOAD
 ================================ */
-document.addEventListener("DOMContentLoaded", () => {
+<script>
+function showTab(id, btn){
 
-  // Prime Deals
-  fetch(getSheetUrl(0))
-    .then(res => res.text())
-    .then(csv => renderCards(csvToJson(csv), "primeDealsContainer"))
-    .catch(err => console.error("Prime Deals error:", err));
+  // hide all tabs
+  document.querySelectorAll('.listings-section > div').forEach(d => {
+    d.style.display = 'none';
+  });
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-  // Buy Property
-  fetch(getSheetUrl(426802063))
-    .then(res => res.text())
-    .then(csv => renderCards(csvToJson(csv), "buyPropertyContainer"))
-    .catch(err => console.error("Buy Property error:", err));
+  // show selected tab
+  const target = document.getElementById(id);
+  target.style.display = 'block';
+  btn.classList.add('active');
 
-  // Rent / Lease
-  fetch(getSheetUrl(402021334))
-    .then(res => res.text())
-    .then(csv => renderCards(csvToJson(csv), "rentLeaseContainer", true))
-    .catch(err => console.error("Rent / Lease error:", err));
+  // 🔑 FETCH + RENDER ONLY WHEN CLICKED
+  if (id === 'prime') {
+    fetch(getSheetUrl(0))
+      .then(res => res.text())
+      .then(csv => renderCards(csvToJson(csv), "primeDealsContainer"));
+  }
 
-});
+  if (id === 'buy') {
+    fetch(getSheetUrl(426802063))
+      .then(res => res.text())
+      .then(csv => renderCards(csvToJson(csv), "buyPropertyContainer"));
+  }
+
+  if (id === 'rent') {
+    fetch(getSheetUrl(402021334))
+      .then(res => res.text())
+      .then(csv => renderCards(csvToJson(csv), "rentLeaseContainer", true));
+  }
+
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
