@@ -54,9 +54,7 @@ header{
   gap:12px;
 }
 
-.brand-logo{
-  height:80px;
-}
+.brand-logo{height:80px;}
 
 .brand-text h1{
   color:var(--gold);
@@ -90,14 +88,13 @@ header{
   display:flex;
   justify-content:center;
   gap:16px;
-  flex-wrap:nowrap; /* 🔒 FIX: force single horizontal line */
 }
 
 .property-tabs button{
   background:var(--blue);
   color:#fff;
   border:none;
-  padding:14px 26px;
+  padding:14px 30px;
   border-radius:30px;
   font-size:.95rem;
   font-weight:700;
@@ -107,29 +104,6 @@ header{
 .property-tabs button.active{
   background:var(--gold);
   color:var(--blue);
-}
-
-/* ================= DROPDOWN OVERLAY ================= */
-.listing-overlay{
-  position:absolute;
-  left:0;
-  right:0;
-  background:#fff;
-  box-shadow:0 20px 50px rgba(0,0,0,.25);
-  padding:30px 8%;
-  display:none;
-  z-index:50;
-}
-
-.listing-overlay.active{
-  display:block;
-}
-
-.listing-card{
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:18px;
-  margin-bottom:16px;
 }
 
 /* ================= HERO ================= */
@@ -186,6 +160,28 @@ header{
   font-weight:700;
   border-radius:6px;
   cursor:pointer;
+}
+
+/* ================= LISTINGS (FIXED) ================= */
+.listings-section{
+  padding:50px 8%;
+}
+
+.listings-wrapper{
+  max-width:620px;      /* keeps data on LEFT only */
+}
+
+.listings-section > div{
+  display:none;
+}
+
+.listings-section > div.active{
+  display:block;
+}
+
+.listings-wrapper > div{
+  padding:18px 0;
+  border-bottom:1px solid #e0e0e0;   /* clean separator */
 }
 
 /* ================= MAP ================= */
@@ -257,6 +253,21 @@ footer h4{
   font-size:.8rem;
   opacity:.75;
 }
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding:70px 6%;
+  }
+
+  .hero-content h2{font-size:2.2rem;}
+
+  .listings-wrapper{
+    max-width:100%;
+  }
+}
 </style>
 </head>
 
@@ -281,16 +292,9 @@ footer h4{
 
 <!-- ACTION TABS -->
 <div class="property-tabs">
-  <button class="tab-btn" onclick="toggleTab('prime', this)">Prime Deals</button>
-  <button class="tab-btn" onclick="toggleTab('buy', this)">Buy Property</button>
-  <button class="tab-btn" onclick="toggleTab('rent', this)">Rent / Lease</button>
-</div>
-
-<!-- DROPDOWN LISTINGS -->
-<div class="listing-overlay" id="listingOverlay">
-  <div id="prime" style="display:none;"><div id="primeDealsContainer"></div></div>
-  <div id="buy" style="display:none;"><div id="buyPropertyContainer"></div></div>
-  <div id="rent" style="display:none;"><div id="rentLeaseContainer"></div></div>
+  <button class="tab-btn" onclick="showTab('prime', this)">Prime Deals</button>
+  <button class="tab-btn" onclick="showTab('buy', this)">Buy Property</button>
+  <button class="tab-btn" onclick="showTab('rent', this)">Rent / Lease</button>
 </div>
 
 <section class="hero">
@@ -301,24 +305,42 @@ footer h4{
 
   <form class="form-box">
     <h3>Connect With Us</h3>
+
     <select required>
       <option value="">Property Type</option>
       <option>Plot</option>
       <option>Flat</option>
       <option>Agricultural</option>
     </select>
+
     <input placeholder="Location">
     <input placeholder="Budget">
     <input placeholder="Your Name" required>
     <input placeholder="Phone" required>
+
     <button type="submit">Submit</button>
   </form>
+</section>
+
+<section class="listings-section">
+  <div id="prime">
+    <div class="listings-wrapper" id="primeDealsContainer"></div>
+  </div>
+
+  <div id="buy">
+    <div class="listings-wrapper" id="buyPropertyContainer"></div>
+  </div>
+
+  <div id="rent">
+    <div class="listings-wrapper" id="rentLeaseContainer"></div>
+  </div>
 </section>
 
 <section class="map-section">
   <h2>Explore Sonepat</h2>
   <div class="map-box">
-    <iframe src="https://www.google.com/maps?q=Kundli,+Sonipat&output=embed" width="100%" height="100%" style="border:0;"></iframe>
+    <iframe src="https://www.google.com/maps?q=Kundli,+Sonipat&output=embed"
+      width="100%" height="100%" style="border:0;"></iframe>
   </div>
 </section>
 
@@ -340,7 +362,8 @@ footer h4{
     Email:
     <a href="mailto:sonepatprimeestates@gmail.com" style="color:#D4AF37;">
       sonepatprimeestates@gmail.com
-    </a>
+    </a><br>
+    <em>Calls or WhatsApp messages will not be entertained.</em>
   </p>
 
   <div class="footer-links">
@@ -357,23 +380,14 @@ footer h4{
 <script src="js/listings.js"></script>
 
 <script>
-function toggleTab(id, btn){
-  const overlay = document.getElementById('listingOverlay');
-  const isOpen = overlay.classList.contains('active') && btn.classList.contains('active');
+function showTab(id, btn){
+  document.querySelectorAll('.listings-section > div')
+    .forEach(d => d.classList.remove('active'));
 
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('#listingOverlay > div').forEach(d=>d.style.display='none');
+  document.querySelectorAll('.tab-btn')
+    .forEach(b => b.classList.remove('active'));
 
-  if(isOpen){
-    overlay.classList.remove('active');
-    return;
-  }
-
+  document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-  document.getElementById(id).style.display='block';
-  overlay.classList.add('active');
 }
 </script>
-
-</body>
-</html>
