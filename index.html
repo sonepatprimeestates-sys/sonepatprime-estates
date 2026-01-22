@@ -168,7 +168,7 @@ header{
 }
 
 .listings-wrapper{
-  max-width:620px;      /* keeps data on LEFT only */
+  max-width:620px;
 }
 
 .listings-section > div{
@@ -181,7 +181,7 @@ header{
 
 .listings-wrapper > div{
   padding:18px 0;
-  border-bottom:1px solid #e0e0e0;   /* clean separator */
+  border-bottom:1px solid #e0e0e0;
 }
 
 /* ================= MAP ================= */
@@ -290,7 +290,6 @@ footer h4{
   </div>
 </header>
 
-<!-- ACTION TABS -->
 <div class="property-tabs">
   <button class="tab-btn" onclick="showTab('prime', this)">Prime Deals</button>
   <button class="tab-btn" onclick="showTab('buy', this)">Buy Property</button>
@@ -381,28 +380,25 @@ footer h4{
 
 <script>
 function showTab(id, btn){
-  // hide all
   document.querySelectorAll('.listings-section > div').forEach(d => {
     d.classList.remove('active');
-    d.style.display = 'none';   // 🔑 FORCE RESET
+    d.style.display = 'none';
   });
 
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-  // show selected
   const target = document.getElementById(id);
   target.classList.add('active');
-  target.style.display = 'block'; // 🔑 FORCE SHOW
+  target.style.display = 'block';
 
   btn.classList.add('active');
 
-  // optional: bring user to data area smoothly
+  loadTabData(id);
+
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 showTab('prime', document.querySelector('.tab-btn'));
 </script>
 
-
 </body>
 </html>
-
