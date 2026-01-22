@@ -3,6 +3,10 @@ alert("JS LOADED");
 const SHEET_ID = "1uvSZpQBcUXyQbjaMK7UsWOBJkiRvwAVIt8YIYCmXTTA";
 const PHONE_NUMBER = "9050501099";
 
+/* Published CSV link */
+const PUBLISHED_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3K7yILWEa3HU9Bb9xwGkKU_1LFlpg7wztm4lEAYYyMyZNj2_-gtpK3kOJebDjKgS54NaGtgeyRNN5/pub?output=csv";
+
 function getSheetUrl(gid) {
   return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}&v=${Date.now()}`;
 }
@@ -45,21 +49,38 @@ function renderCards(data, containerId) {
 }
 
 window.loadTabData = function (id) {
-  if (id === "prime") {
-    fetch(getSheetUrl(0))
-      .then(r => r.text())
-      .then(csv => renderCards(csvToJson(csv), "primeDealsContainer"));
-  }
+  fetch(PUBLISHED_CSV_URL + "&v=" + Date.now())
+    .then(r => r.text())
+    .then(csv => {
+      const allData = csvToJson(csv);
 
-  if (id === "buy") {
-    fetch(getSheetUrl(426802063))
-      .then(r => r.text())
-      .then(csv => renderCards(csvToJson(csv), "buyPropertyContainer"));
-  }
+      let filtered = [];
 
-  if (id === "rent") {
-    fetch(getSheetUrl(402021334))
-      .then(r => r.text())
-      .then(csv => renderCards(csvToJson(csv), "rentLeaseContainer"));
-  }
+      if (id === "prime") {
+        filtered = allData.filter(
+          item =>
+            item.property_status === "Available" &&
+            item.deal_for === "Prime Deals"
+        );
+        renderCards(filtered, "primeDealsContainer");
+      }
+
+      if (id === "buy") {
+        filtered = allData.filter(
+          item =>
+            item.property_status === "Available" &&
+            item.deal_for === "Buy Property"
+        );
+        renderCards(filtered, "buyPropertyContainer");
+      }
+
+      if (id === "rent") {
+        filtered = allData.filter(
+          item =>
+            item.property_status === "Available" &&
+            item.deal_for === "Rent / Lease"
+        );
+        renderCards(filtered, "rentLeaseContainer");
+      }
+    });
 };
