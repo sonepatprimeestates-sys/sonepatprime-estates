@@ -1,16 +1,11 @@
 alert("JS LOADED");
 
-const SHEET_ID = "1uvSZpQBcUXyQbjaMK7UsWOBJkiRvwAVIt8YIYCmXTTA";
 const PHONE_NUMBER = "9050501099";
 
-/* Published CSV link */
 const PUBLISHED_CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3K7yILWEa3HU9Bb9xwGkKU_1LFlpg7wztm4lEAYYyMyZNj2_-gtpK3kOJebDjKgS54NaGtgeyRNN5/pub?output=csv";
 
-function getSheetUrl(gid) {
-  return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}&v=${Date.now()}`;
-}
-
+/* ================= CSV → JSON ================= */
 function csvToJson(csv) {
   const rows = csv
     .trim()
@@ -29,44 +24,49 @@ function csvToJson(csv) {
   });
 }
 
+/* ================= RENDER ================= */
 function renderCards(data, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
   container.innerHTML = "";
 
-  data
-    .filter(item => item.property_status === "Available")
-    .forEach(item => {
-      container.innerHTML += `
-        <div class="property-card">
-          <h3>${item.title}</h3>
-          <p>${item.location} • ${item.size}</p>
-          ${item.highlight ? `<p>${item.highlight}</p>` : ""}
-        </div>
-      `;
-    });
+  if (!data.length) {
+    container.innerHTML = "<p>No available listings.</p>";
+    return;
+  }
+
+  data.forEach(item => {
+    container.innerHTML += `
+      <div class="property-card">
+        <h3>${item.title}</h3>
+        <p>${item.location} • ${item.size}</p>
+        ${item.highlight ? `<p>${item.highlight}</p>` : ""}
+      </div>
+    `;
+  });
 }
 
-window.loadTabData = function (id) {
+/* ================= LOAD DATA ================= */
+window.loadTabData = function (tab) {
   fetch(PUBLISHED_CSV_URL + "&v=" + Date.now())
     .then(r => r.text())
     .then(csv => {
-      const allData = csvToJson(csv);
+      const data = csvToJson(csv);
 
       let filtered = [];
 
-      if (id === "prime") {
-        filtered = allData.filter(
+      if (tab === "prime") {
+        filtered = data.filter(
           item =>
             item.property_status === "Available" &&
-            item.deal_for === "Prime Deals"
+            item.featured === "yes"
         );
         renderCards(filtered, "primeDealsContainer");
       }
 
-      if (id === "buy") {
-        filtered = allData.filter(
+      if (tab === "buy") {
+        filtered = data.filter(
           item =>
             item.property_status === "Available" &&
             item.deal_for === "Buy Property"
@@ -74,13 +74,16 @@ window.loadTabData = function (id) {
         renderCards(filtered, "buyPropertyContainer");
       }
 
-      if (id === "rent") {
-        filtered = allData.filter(
+      if (tab === "rent") {
+        filtered = data.filter(
           item =>
             item.property_status === "Available" &&
             item.deal_for === "Rent / Lease"
         );
         renderCards(filtered, "rentLeaseContainer");
       }
+    })
+    .catch(err => {
+      console.error("Sheet fetch error:", err);
     });
 };
