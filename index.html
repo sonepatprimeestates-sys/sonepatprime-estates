@@ -399,6 +399,29 @@ function showTab(id, btn){
 }
 showTab('prime', document.querySelector('.tab-btn'));
 </script>
+  
+<script>
+document.querySelector(".form-box").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const propertyType = this.querySelector("select").value;
+  const location = this.querySelectorAll("input")[0].value;
+  const budget = this.querySelectorAll("input")[1].value;
+  const name = this.querySelectorAll("input")[2].value;
+  const phone = this.querySelectorAll("input")[3].value;
+
+  const googleFormURL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSfcmvYUu40UK9ExFVi0i1_vxtXR7Asj7urI-CJHkzfbyN9Jfg/viewform?" +
+    "entry.1004920093=" + encodeURIComponent(propertyType) +
+    "&entry.1932303709=" + encodeURIComponent(location) +
+    "&entry.1604031610=" + encodeURIComponent(budget) +
+    "&entry.1129725770=" + encodeURIComponent(name) +
+    "&entry.1988695889=" + encodeURIComponent(phone);
+
+  window.location.href = googleFormURL;
+});
+</script>
 
 </body>
 </html>
+
