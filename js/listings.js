@@ -1,4 +1,3 @@
-alert("JS LOADED");
 
 const PHONE_NUMBER = "9050501099";
 
@@ -87,3 +86,29 @@ window.loadTabData = function (tab) {
       console.error("Sheet fetch error:", err);
     });
 };
+
+function showTab(tab, el) {
+  // Remove active state from buttons
+  document.querySelectorAll(".tab-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  if (el) el.classList.add("active");
+
+  // Hide all sections
+  document.querySelectorAll(".property-section")
+    .forEach(sec => sec.style.display = "none");
+
+  // Show selected section
+  if (tab === "prime") {
+    document.getElementById("primeDealsContainer").style.display = "grid";
+  }
+  if (tab === "buy") {
+    document.getElementById("buyPropertyContainer").style.display = "grid";
+  }
+  if (tab === "rent") {
+    document.getElementById("rentLeaseContainer").style.display = "grid";
+  }
+
+  // Load data ONLY after click
+  loadTabData(tab);
+}
