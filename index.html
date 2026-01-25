@@ -322,6 +322,10 @@ footer h4{
 </section>
 
 <section class="listings-section">
+  <p id="defaultMsg" style="text-align:center; font-weight:600;">
+  Select a category above to view available properties.
+</p>
+
   <div id="prime">
     <div class="listings-wrapper" id="primeDealsContainer"></div>
   </div>
@@ -397,7 +401,7 @@ function showTab(id, btn){
 
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-showTab('prime', document.querySelector('.tab-btn'));
+
 </script>
   
 <script>
@@ -424,5 +428,6 @@ document.querySelector(".form-box").addEventListener("submit", function (e) {
 
 </body>
 </html>
+
 
 
