@@ -396,6 +396,7 @@ function showTab(id, btn){
   target.style.display = 'block';
 
   btn.classList.add('active');
+document.getElementById('defaultMsg')?.remove();
 
   loadTabData(id);
 
@@ -428,6 +429,7 @@ document.querySelector(".form-box").addEventListener("submit", function (e) {
 
 </body>
 </html>
+
 
 
 
